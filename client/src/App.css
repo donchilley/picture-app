@@ -1,0 +1,105 @@
+body {
+    background-color: black;
+    color: whitesmoke;
+    font-family: 'Bebas Neue', cursive;
+}
+
+button {
+    font-family: 'Bebas Neue', cursive;
+}
+
+input {
+    font-family: 'Bebas Neue', cursive;
+}
+
+.header {
+    position: relative;
+    height: 25vh;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+
+.upload-section button {
+    border: none;
+}
+
+button:hover {
+    cursor: pointer;
+    background-color: black;
+    color: white;
+    border: 1px solid white;
+}
+
+.content {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.image-count {
+    display: inline-flex;
+    width: 100%;
+    height: fit-content;
+    text-align: left;
+}
+
+.image {
+    height: 400px;
+    width: 300px;
+}
+
+.image-count .buffer {
+    width: 20%;
+}
+
+.image-uploader {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: transparent;
+    opacity: 100%;
+    padding: 20%;
+
+}
+
+.image-uploader .uploader-content {
+    height: 60%;
+    width: 60%;
+    background-color: rgb(59, 58, 58);
+    opacity: 100%;
+    border-radius: 10px;
+    position: relative;
+}
+
+.hide {
+    display: none;
+}
+
+.uploader-content .file-upload-section {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.uploader-content .button-section {
+    padding: 5px;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}
+
+.uploader-content .button-section button {
+    margin-left: 5px;
+}
+
+.form {
+    height: 100%;
+    width: 100%;
+
+}
