@@ -10,3 +10,6 @@ Would have liked to
 - reload images when overwriting an already existing image
 - containerize both the client and server with docker.
 - style the input file button
+
+It took me approximately 15 hours to complete this exercise.
+I got stuck attemtping to read forms on the server side.
