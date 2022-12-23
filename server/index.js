@@ -1,58 +1,49 @@
 const express = require("express");
 const router = express.Router();
 const fs = require('fs');
-const bodyParser = require('body-parser')
+const multer = require('multer')
 const path = require('path')
 
 const PORT = process.env.PORT || 3009;
 const app = express();
-
-const images = []
-
-function saveImage(image) {
-  images.push({ imageData: image });
-}
-
-//app.use(express.json({ limit: '500mb' }));
-//app.use(express.urlencoded({ limit: '500mb', extended: true, parameterLimit: 50000 }));
-
 const cors = require("cors")
 app.use(cors({
   origin: "http://localhost:3000"
 }))
 
 router.get("/images", (req, res) => {
-  console.log("received request.")
-  res.json({ message: 'Draft has not started yet.' })
+  res.json(JSON.stringify(imageDir));
 })
-
 
 const imageDirectoryPath = path.join(__dirname, './images');
-router.post("/image",
-  bodyParser.raw({ type: ["image/jpeg", "image/png"], limit: "15mb" }),
-  (req, res) => {
-    try {
-      fs.writeFile(imageDirectoryPath + '/hello.jpeg', req.body, (error) => {
-        if (error) {
-          throw error;
-        }
-      });
-      res.sendStatus(200);
-    } catch (error) {
-      res.sendStatus(500);
-    }
-  });
+app.use('/images', express.static(imageDirectoryPath))
+const imageDir = [
+  { name: 'oasis', path: `images/oasis.jpeg` },
+  { name: 'tree', path: `images/tree.jpeg` },
+  { name: 'waterfall', path: 'images/waterfall.jpeg' },
+  { name: 'fall', path: 'images/fall.jpeg' }
+]
 
-/*
-router.post("/image", (req, res) => {
-  console.log(req.body)
-  fs.writeFile("./images/image.png", req.body, (error => {
-    if (error) {
-      throw error;
-    }
-  }))
-})
-*/
+const upload = multer();
+router.post("/image_form", upload.any(), (req, res) => {
+  const name = req.body.name;
+  const path = imageDirectoryPath + "/" + req.body.name + ".jpeg";
+  const index = imageDir.findIndex((image) => image.name === name)
+  if (index !== -1) {
+    imageDir.splice(index, 1)
+  }
+  imageDir.push({ name, path: `images/${req.body.name}.jpeg` })
+  try {
+    fs.writeFile(path, req.files[0].buffer, (error) => {
+      if (error) {
+        throw error;
+      }
+    });
+    res.json(JSON.stringify(imageDir));
+  } catch (error) {
+    res.sendStatus(500);
+  }
+});
 
 app.use("/", router)
 

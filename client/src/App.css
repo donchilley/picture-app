@@ -22,8 +22,8 @@ input {
 }
 
 
-.upload-section button {
-    border: none;
+button {
+    border: 1px solid transparent;
 }
 
 button:hover {
@@ -36,6 +36,7 @@ button:hover {
 .content {
     display: flex;
     justify-content: space-evenly;
+    flex-wrap: wrap;
 }
 
 .image-count {
@@ -43,11 +44,6 @@ button:hover {
     width: 100%;
     height: fit-content;
     text-align: left;
-}
-
-.image {
-    height: 400px;
-    width: 300px;
 }
 
 .image-count .buffer {
@@ -62,44 +58,73 @@ button:hover {
     width: 100%;
     background-color: transparent;
     opacity: 100%;
-    padding: 20%;
+    padding: 38vh 30vw;
 
 }
 
 .image-uploader .uploader-content {
-    height: 60%;
-    width: 60%;
+    height: 24vh;
+    width: 40vw;
     background-color: rgb(59, 58, 58);
     opacity: 100%;
-    border-radius: 10px;
-    position: relative;
+    border-radius: .15em;
+    position: fixed;
+    box-shadow: 0 0 .5em .1em whitesmoke;
 }
 
 .hide {
     display: none;
 }
 
+.dampened {
+    color: grey;
+}
+
 .uploader-content .file-upload-section {
     height: 100%;
     width: 100%;
     display: flex;
-    justify-content: space-around;
-    align-items: center;
+    flex-flow: column;
+    justify-content: center;
+
+}
+
+.file-upload-section input {
+    margin-bottom: 1vh;
+    margin-left: 15%;
+    width: 80%;
+}
+
+.file-upload-section #image_name {
+    width: 50%;
 }
 
 .uploader-content .button-section {
-    padding: 5px;
+    padding: 1vmin;
     position: absolute;
     right: 0;
     bottom: 0;
 }
 
 .uploader-content .button-section button {
-    margin-left: 5px;
+    margin-left: .5vmin;
 }
 
 .form {
     height: 100%;
     width: 100%;
 
+}
+
+img {
+    height: 35vmin;
+    width: 35vmin;
+    object-fit: scale-down;
+}
+
+input[type="text"]:focus {
+    outline: none;
+    box-shadow: 0 0 .1em .1em whitesmoke;
+    background-color: black;
+    color: whitesmoke;
 }
