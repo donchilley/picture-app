@@ -1,4 +1,4 @@
-## To build and run the client and server containers in Linux environment
+## To build and run the client and server in Linux environment with npm installed
 ## Open two terminals, navigate to the picture-app directory in both
 ## In first terminal run
 cd server && npm i && npm run start
