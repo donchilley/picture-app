@@ -4,6 +4,7 @@
 cd server && npm i && npm run start
 ## In second terminal run
 cd client && npm i && npm run start
+## Now navigate to http://localhost:3000 in your browser.
 
 Would have liked to
 - add a popup notification for status after uploading a new image.
